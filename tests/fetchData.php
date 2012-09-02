@@ -23,6 +23,28 @@ function getUrlContent($url) {
   return file_get_contents($cacheFolder . $filename);
 }
 
+/*
+  Go on all the href and change them to:
+ <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
+   simple collapsible
+ </button>
+ <div id="demo" class="collapse in"> … </div>
+*/
+function changeHrefToCollapse($html) {
+  $newHtml = preg_replace("/<a/i",
+          "<button type='button' class='btn btn-danger'> <a ",
+          $html);
+  $newHtml = preg_replace("/<\/a>/i", "</a></button>", $newHtml); //str_replace("</a>", "</a></button>", $html);
+  echo "=====n\n\n .$newHtml \n\n\n=========\n";
+  return $newHtml;
+  
+//  $races = explode("<a title", $html);
+//  foreach ($races as $race) {
+//    // <a title="מוחרקה" href="1041/Info">מוחרקה</a>
+//    $race = "<button type='button' class='btn btn-danger' <a" . $race . "</button>";
+//  }
+//  return implode($races);
+}
 
 //
 // Starting the party
@@ -35,17 +57,10 @@ $rawHtml = file_get_contents($path);
 $inx1 = strpos($rawHtml, "rgMasterTable") + 15;
 $inx2 = strpos($rawHtml, "</table>", $inx1) + 33;
 $ourHtml = substr($rawHtml, $inx1, $inx2-$inx1);
-//$title = strip_tags($title);
-//error_log("title: $title");
-//
-//
-//$inx1 = $inx2;
-//$inx2 = strpos($rawHtml, "<!--End Green Box -->", $inx1);
-//
-//$airHtml = substr($rawHtml, $inx1, $inx2-$inx1);
-//$airHtml = strip_tags($airHtml, "<p><a>");
 
-error_log($ourHtml);
+$newHtml = changeHrefToCollapse($ourHtml);
+
+echo($newHtml);
 
 
 //SvivaContentItem SvivaFontSmall PLAirQFDivGreenBoxCenter

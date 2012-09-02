@@ -1,10 +1,20 @@
-
-
 /* ===== Primary Styles ========================================================
-   Author:
+   Author: Ido Green
+   plus.ly/greenido
+   @greenido
+
    ========================================================================== */
 
 
+.rgRow {
+  height: 4em;
+}
+
+.btn-large {
+  margin-top: 0.5em;
+  margin-left: 0.8em;
+  margin-right: 0.3em;
+}
 
 
 
