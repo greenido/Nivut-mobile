@@ -2,6 +2,21 @@
  * @greenido
  */
 
+// util to open links from modal to a new page
+function addBlankTargets(links) {
+  //var links = $("#raceDetails a"); //document.getElementsByTagName('a');
+  var len = links.length;
+  for(var i=0; i<len; i++) {
+    oldLink = links[i].href;
+    oldLink = oldLink.substring(21);
+    links[i].href = "http://nivut.org.il" + oldLink; 
+    links[i].target = "_blank";
+  }
+}
+
+
+//
+// start
 $(function() {
   $("#raceDetails").modal({
     keyboard: true,
@@ -27,11 +42,15 @@ $(function() {
       //      
       $.get("getEvent.php?event=" + href, function(data) {
         $(".modal-body").html(data);
+        addBlankTargets($(".modal-body a"));
         $("#raceDetails").modal('show');
       });
     }
     
   });
+  
+  
+  
   
   
 });

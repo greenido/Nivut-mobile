@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Nivut</title>
+    <title>ניווט נייד</title>
     <meta name="description" content="Orienteering in Israel with this mobile web app">
     <meta name="author" content="Ido Green | greenido.wordpress.com | @greenido">
 
@@ -40,12 +40,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Mobile Nivut</a>
+          <a class="brand" href="#">ניווט נייד</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="#">אירועים</a></li>
+              <li><a href="#weather">מזג האוויר</a></li>
+              <li><a href="#about">אודות</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -55,8 +55,8 @@
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Next Races</h1>
+      <div class="hero-unit" dir="rtl">
+        <h1>אירועי ניווט</h1>
         <p>
           <?php
 
@@ -76,13 +76,13 @@
           $rawHtml = file_get_contents($path);
           //                        1234567890123456789012345678901234567890
           $inx1 = strpos($rawHtml, "rgMasterTable") + 15;
-          $inx2 = strpos($rawHtml, "</table>", $inx1) + 33;
+          $inx2 = strpos($rawHtml, "</table>", $inx1) ;
           $ourHtml = substr($rawHtml, $inx1, $inx2 - $inx1);
           $newHtml = changeHrefToCollapse($ourHtml);
           echo "<div id='airhtml' dir='rtl'><table $newHtml </div>";
           ?>
         </p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <p>  </p>
       </div>
 
 
@@ -91,40 +91,21 @@
            role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3 id="myModalLabel">Modal header</h3>
+          <h3 id="myModalLabel">פרטי האירוע</h3>
         </div>
         <div class="modal-body">
-          <p>One fine details per race</p>
+          <p></p>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+          <button class="btn btn-primary btn-danger" data-dismiss="modal" aria-hidden="true">סגור</button>
         </div>
       </div>
 
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span4">
-
-          bla-bla
-        </div>
-
-
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-      </div>
-
+      
       <hr>
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; Ido 2012</p>
       </footer>
 
     </div> <!-- /container -->
