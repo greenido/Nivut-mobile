@@ -5,6 +5,9 @@
 
    ========================================================================== */
 
+.hero-unit {
+  padding-top: 1em;
+}
 
 .rgRow {
   height: 4em;
@@ -17,8 +20,18 @@
 }
 
 
+#airhtml {
+  background: lightcyan;
+  border-radius: 25px;
+  padding: 15px;
+}
+#plusone {
+  padding-top: 7px;
+}
 
-
+.x-but {
+  margin-left: 1em;
+}
 
 
 

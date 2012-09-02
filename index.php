@@ -32,7 +32,7 @@
   <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-fixed-top" >
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -44,8 +44,9 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="#">אירועים</a></li>
-              <li><a href="#weather">מזג האוויר</a></li>
-              <li><a href="#about">אודות</a></li>
+              <li><a href="weather.php">מזג האוויר</a></li>
+              <li><a href="http://plus.ly/greenido" target="_blank">אודות</a></li>
+              <li><div id="plusone"><g:plusone></g:plusone></div></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -76,10 +77,11 @@
           $rawHtml = file_get_contents($path);
           //                        1234567890123456789012345678901234567890
           $inx1 = strpos($rawHtml, "rgMasterTable") + 15;
-          $inx2 = strpos($rawHtml, "</table>", $inx1) ;
+          $inx2 = strpos($rawHtml, "</table>", $inx1);
           $ourHtml = substr($rawHtml, $inx1, $inx2 - $inx1);
           $newHtml = changeHrefToCollapse($ourHtml);
-          echo "<div id='airhtml' dir='rtl'><table $newHtml </div>";
+          echo "<div id='airhtml' dir='rtl'><table $newHtml </div>";        
+//          echo "<hr><footer><p>&copy; Ido 2012</p></footer>";
           ?>
         </p>
         <p>  </p>
@@ -90,7 +92,8 @@
       <div class="modal fade" id="raceDetails" tabindex="-1" 
            role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <button type="button" class="close x-but" data-dismiss="modal" aria-hidden="true">×</button>
+          
           <h3 id="myModalLabel">פרטי האירוע</h3>
         </div>
         <div class="modal-body">
@@ -102,18 +105,14 @@
       </div>
 
       
-      <hr>
-
-      <footer>
-        <p>&copy; Ido 2012</p>
-      </footer>
 
     </div> <!-- /container -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
 
     <script src="js/libs/bootstrap/bootstrap.min.js"></script>
-
+    <script src="http://apis.google.com/js/plusone.js"></script>
+     
     <script src="js/libs/bootstrap/modal.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/script.js"></script>
