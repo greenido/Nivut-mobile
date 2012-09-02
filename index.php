@@ -57,7 +57,6 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit" dir="rtl">
-        <h1>אירועי ניווט</h1>
         <p>
           <?php
 
@@ -65,9 +64,10 @@
           function changeHrefToCollapse($html) {
             $newHtml = preg_replace("/<a/i", "<a class='btn btn-primary btn-large race-but' ", // href='humans.txt'danger data-target='#raceDetails'
                     $html);
-//              $newHtml = preg_replace("/href=/i",
-//                      "href='"
-//                      $html);
+            // clean the massy html we got
+            $newHtml = preg_replace("/<td style=\"display:none;\">(False|True)/", "", $newHtml);
+            $newHtml = preg_replace("/style=/i", "blabla=", $newHtml);
+            
             return $newHtml;
           }
 
