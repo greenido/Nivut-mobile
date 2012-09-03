@@ -54,6 +54,7 @@ http://www.svivaaqm.net/Default.rtl.aspx
             <ul class="nav">
               <li><a href="index.php">אירועים</a></li>
               <li class="active"><a href="weather.php">מזג האוויר</a></li>
+              <li><a href="http://nivut.org.il" target="_blank">האתר הרגיל</a></li>
               <li><a href="http://plus.ly/greenido" target="_blank">אודות</a></li>
               <li><div id="plusone"><g:plusone></g:plusone></div></li>
             </ul>

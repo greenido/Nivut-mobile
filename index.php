@@ -45,6 +45,7 @@
             <ul class="nav">
               <li class="active"><a href="#">אירועים</a></li>
               <li><a href="weather.php">מזג האוויר</a></li>
+              <li><a href="http://nivut.org.il" target="_blank">האתר הרגיל</a></li>
               <li><a href="http://plus.ly/greenido" target="_blank">אודות</a></li>
               <li><div id="plusone"><g:plusone></g:plusone></div></li>
             </ul>
@@ -67,7 +68,31 @@
             // clean the massy html we got
             $newHtml = preg_replace("/<td style=\"display:none;\">(False|True)/", "", $newHtml);
             $newHtml = preg_replace("/style=/i", "blabla=", $newHtml);
-            
+
+            return $newHtml;
+          }
+
+          function stripBalagan($html) {
+            $newHtml = '<ul class="nav nav-pills nav-stacked">';
+            $inx1 = strpos($html, "tbody") + 7;
+            $inx1 = strpos($html, "<tr", $inx1) + 3;
+            for ($j = 0; $j < 15; $j++) {
+              $inx1 = strpos($html, "<td>", $inx1) + 4;
+              $inx2 = strpos($html, "</td>", $inx1);
+              $date = substr($html, $inx1, $inx2 - $inx1);
+
+              $inx1 = strpos($html, "<td>", $inx2);
+              $inx2 = strpos($html, "</td>", $inx1);
+              $link = substr($html, $inx1, $inx2 - $inx1);
+              $link = preg_replace("/<a/i", "<a class='btn btn-primary btn-large race-but' ", $link);
+              //{$date} 
+              $link = preg_replace("/<\/a>/i", " <br/><span class='sml-font'> ".$date."</span></a>", $link);
+              
+              $inx1 = strpos($html, "<tr", $inx1) + 3;
+              
+              $newHtml .= "<li> {$link} </li>";
+            }
+            $newHtml .= "</ul>";
             return $newHtml;
           }
 
@@ -79,9 +104,9 @@
           $inx1 = strpos($rawHtml, "rgMasterTable") + 15;
           $inx2 = strpos($rawHtml, "</table>", $inx1);
           $ourHtml = substr($rawHtml, $inx1, $inx2 - $inx1);
-          $newHtml = changeHrefToCollapse($ourHtml);
-          echo "<div id='airhtml' dir='rtl'><table $newHtml </div>";        
-//          echo "<hr><footer><p>&copy; Ido 2012</p></footer>";
+          $newHtml = stripBalagan($ourHtml);
+          //$newHtml = changeHrefToCollapse($ourHtml);
+          echo "<div dir='rtl'> $newHtml </div>";
           ?>
         </p>
         <p>  </p>
@@ -93,7 +118,7 @@
            role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
           <button type="button" class="close x-but" data-dismiss="modal" aria-hidden="true">×</button>
-          
+
           <h3 id="myModalLabel">פרטי האירוע</h3>
         </div>
         <div class="modal-body">
@@ -104,7 +129,7 @@
         </div>
       </div>
 
-      
+
 
     </div> <!-- /container -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -112,7 +137,7 @@
 
     <script src="js/libs/bootstrap/bootstrap.min.js"></script>
     <script src="http://apis.google.com/js/plusone.js"></script>
-     
+
     <script src="js/libs/bootstrap/modal.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/script.js"></script>
