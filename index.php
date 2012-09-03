@@ -85,12 +85,23 @@
               $inx2 = strpos($html, "</td>", $inx1);
               $link = substr($html, $inx1, $inx2 - $inx1);
               $link = preg_replace("/<a/i", "<a class='btn btn-primary btn-large race-but' ", $link);
-              //{$date} 
-              $link = preg_replace("/<\/a>/i", " <br/><span class='sml-font'> ".$date."</span></a>", $link);
               
-              $inx1 = strpos($html, "<tr", $inx1) + 3;
+              // bring it to the next item in the table
+              $inx1 = strpos($html, "<tr", $inx1) + 3; 
+              $restData = substr($html, $inx2, $inx1 - $inx2);
+              // search for foot or bike event. 
+              $inx3 = strpos($restData, "רכוב");
+              $icon = "<img src='img/foot-o.png' alt='foot orienteering event'/>";
+              if ($inx3 > 0) {
+                $icon = "<img src='img/bike-o.png' alt='foot orienteering event'/>";
+              }
               
-              $newHtml .= "<li> {$link} </li>";
+              // put the date & icon in the button
+              $link = preg_replace("/<\/a>/i", " <br/><span class='sml-font'> ".$date. $icon . "</span></a>", $link);
+              
+              
+              
+              $newHtml .= "<li>{$link}</li>";
             }
             $newHtml .= "</ul>";
             return $newHtml;
