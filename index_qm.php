@@ -19,7 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
-
+    <link rel="stylesheet" href="css/style.css" />
+    
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.js"></script>
 
@@ -28,15 +29,16 @@
     <div data-role="page" data-theme="c">
 
       <div data-role="header" data-position="fixed">
+        <span class="logo-img"><img src="img/logo_isoa.gif" alt="logo of Orienteering org" /></span>
         <h1>ניווט נייד</h1>
+        
       </div><!-- /header -->
 
       <div data-role="navbar" data-iconpos="bottom">
         <ul>
           <li>
             <a href="#" data-icon="home" class="ui-btn-active ui-state-persist"> ניווטים  </a></li>
-          <li><a data-icon="star" href="weather.php">מזג האוויר</a></li>
-          <li><a data-icon="grid" href="http://nivut.org.il" target="_blank">האתר הרגיל</a></li>
+          <li><a data-icon="star" href="weather_qm.php">מזג האוויר</a></li>
           <li><a data-icon="info" href="http://plus.ly/greenido" target="_blank">אודות</a></li>
         </ul>
       </div><!-- /navbar -->
@@ -46,8 +48,7 @@
 
         // TODO: ugly - need to move it to its own file...
         function changeHrefToCollapse($html) {
-          $newHtml = preg_replace("/<a/i", "<a class='btn btn-primary btn-large race-but' ", 
-                  $html);
+          $newHtml = preg_replace("/<a/i", "<a class='btn btn-primary btn-large race-but' ", $html);
           // clean the massy html we got
           $newHtml = preg_replace("/<td style=\"display:none;\">(False|True)/", "", $newHtml);
           $newHtml = preg_replace("/style=/i", "blabla=", $newHtml);
@@ -99,6 +100,16 @@
         ?>
 
       </div><!-- /content -->
+
+      <div data-role="footer">
+        <div data-role="navbar" data-iconpos="top">
+          <ul>
+            <li><a data-icon="grid" href="http://nivut.org.il" target="_blank">האתר הרגיל</a></li>
+            <li><a data-icon="forward" href="http://blog.nivut.org.il/" target="_blank">ניווטון </a> </li>
+          </ul>
+        </div>
+      </div>
+
     </div><!-- /page -->
 
     <!-- Start of Event detailed page -->

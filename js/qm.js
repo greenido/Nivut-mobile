@@ -20,6 +20,8 @@ function addBlankTargets(links) {
     oldLink = oldLink.substring(21);
     links[i].href = "http://nivut.org.il" + oldLink; 
     links[i].target = "_blank";
+    links[i].setAttribute("data-icon", "forward");
+    links[i].setAttribute("data-role", "button");
   }
 }
 
@@ -36,8 +38,8 @@ $(document).on('pageinit','[data-role=page]', function(){
     var href = $(e.target).attr('href');
     $.get("getEvent.php?event=" + href, function(data) {
       $("#event-details").html(data);
-      addBlankTargets($(".modal-body a"));
-      $.mobile.changePage("#eventPage" , { transition: "slideup"} );
+      addBlankTargets($("#event-details a"));
+      $.mobile.changePage("#eventPage" , {transition: "slideup"} );
     });
  
   });
