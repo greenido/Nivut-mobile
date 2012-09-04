@@ -31,14 +31,18 @@ function addBlankTargets(links) {
 $(document).on('pageinit','[data-role=page]', function(){
 
   console.log("--start the party--");
+  $.mobile.touchOverflowEnabled = true;
+  
   changeLinks($("#main-events a"));
     
   $(".race-but").click(function(e) {
     e.preventDefault();  
     var href = $(e.target).attr('href');
+    $.mobile.showPageLoadingMsg();
     $.get("getEvent.php?event=" + href, function(data) {
       $("#event-details").html(data);
       addBlankTargets($("#event-details a"));
+      $.mobile.hidePageLoadingMsg(); 
       $.mobile.changePage("#eventPage" , {transition: "slideup"} );
     });
  
