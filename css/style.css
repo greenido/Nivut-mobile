@@ -44,7 +44,19 @@
   background: lightcyan;
   padding: 0.5em;
   border-radius: 15px;
-  
+
+}
+
+.ui-bar-a {
+  background-image: -webkit-linear-gradient(#3C3C3C,#7E110F);
+  background-image: -moz-linear-gradient(#3C3C3C,#7E110F);
+  background-image: -ms-linear-gradient(#3C3C3C,#7E110F);
+  background-image: -o-linear-gradient(#3C3C3C,#7E110F);
+  color: yellow;
+}
+
+.ui-header {
+  font-size: 150%;
 }
 
 
